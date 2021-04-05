@@ -9,4 +9,5 @@ EX: https://vast-meadow-12159.herokuapp.com/users to see all users, then add "/p
 
 so if user had a UID of 1234, then use https://vast-meadow-12159.herokuapp.com/users/1234 to get that particular user
 
-to run locally, clone repo
+to run locally, clone repo, navigate to folder FindAPlayer-API in terminal. ensure you have node installed, type node app.js. then you can access the api at
+"localhost:3000". so to see users you would type localhost:3000/users
