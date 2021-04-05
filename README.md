@@ -8,3 +8,5 @@ add extention "/users" , "/chats", "/messages", "/comments", "/replys", "/posts"
 EX: https://vast-meadow-12159.herokuapp.com/users to see all users, then add "/primarykey" of whatever the pk of the item you wnat is to get that particular item.
 
 so if user had a UID of 1234, then use https://vast-meadow-12159.herokuapp.com/users/1234 to get that particular user
+
+to run locally, clone repo
