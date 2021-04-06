@@ -18,3 +18,5 @@ for posts, access post by PID, UID, SID. notice the flages at the end EX: https:
 EX: https://vast-meadow-12159.herokuapp.com/posts/UID/flag1
 
 EX: https://vast-meadow-12159.herokuapp.com/posts/SID/flag1/flag2
+
+for pushing, use "git push heroku HEAD:main"
