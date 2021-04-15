@@ -54,10 +54,13 @@ const replySchema = {
 
 const postSchema = {
   PID: String,
+  Title: String,
   Time_posted: String,
   Body: String,
   Resolved_status: String,
-  Coach_ID: String
+  Coach_ID: String,
+  UID: String,
+  SID: String
 };
 
 const plays_sportSchema = {
@@ -88,6 +91,164 @@ const ratingSchema = {
   Body: String,
   Time_added: String
 };
+
+//dealing with posts -----------------------------------------------------------------------------------
+const post = mongoose.model("post", postSchema);
+
+app.route("/posts")
+
+.get(function(req,res){
+  post.find(function(err, foundPost){
+    if(!err){
+      res.send(foundPost);
+    } else {
+      res.send(err);
+    }
+  });
+})
+
+.post(function(req,res){    //posting new post
+
+  const newPost = new post({
+    PID: req.body.PID,
+    Title: req.body.Title,
+    Time_posted: req.body.Time_posted,
+    Body: req.body.Body,
+    Resolved_status: req.body.Resolved_status,
+    Coach_ID: req.body.Coach_ID,
+    UID: req.body.UID,
+    SID: req.body.SID
+  });
+
+  newPost.save(function(err){
+    if(!err){
+      res.send("success");
+    } else {
+      res.send(err);
+    }
+  });
+});
+
+//getting post by pid
+app.route("/posts/:postPID")
+
+.get(function(req,res){
+  post.findOne({PID: req.params.postPID}, function(err, foundPost){
+    if(foundPost){
+      res.send(foundPost);
+    } else {
+      res.send("post not found");
+    }
+  });
+})
+
+.patch(function(req, res){
+  post.updateOne(
+    {PID: req.params.postPID},
+    {$set: req.body},
+    function(err){
+      if(!err){
+        res.send("Successful");
+      } else{
+        res.send(err);
+      }
+    }
+  );
+})
+
+.delete(function(req,res){
+  post.deleteOne(
+    {PID: req.params.postPID},
+    function(err){
+      if(!err){
+        res.send("success");
+      } else {
+        res.send(err);
+      }
+    }
+  );
+});
+
+//getting post by UID
+app.route("/posts/:postPID/:flag1")
+
+.get(function(req,res){
+  post.find({UID: req.params.postPID}, function(err, foundPost){
+    if(foundPost){
+      res.send(foundPost);
+    } else {
+      res.send("post not found");
+    }
+  });
+})
+
+.patch(function(req, res){
+  post.updateOne(
+    {UID: req.params.postPID},
+    {$set: req.body},
+    function(err){
+      if(!err){
+        res.send("Successful");
+      } else{
+        res.send(err);
+      }
+    }
+  );
+})
+
+.delete(function(req,res){
+  post.deleteOne(
+    {UID: req.params.postPID},
+    function(err){
+      if(!err){
+        res.send("success");
+      } else {
+        res.send(err);
+      }
+    }
+  );
+});
+
+//getting post by SID
+app.route("/posts/:postPID/:flag1/:flag2")
+
+.get(function(req,res){
+  post.find({SID: req.params.postPID}, function(err, foundPost){
+    if(foundPost){
+      res.send(foundPost);
+    } else {
+      res.send("post not found");
+    }
+  });
+})
+
+.patch(function(req, res){
+  post.updateOne(
+    {SID: req.params.postPID},
+    {$set: req.body},
+    function(err){
+      if(!err){
+        res.send("Successful");
+      } else{
+        res.send(err);
+      }
+    }
+  );
+})
+
+.delete(function(req,res){
+  post.deleteOne(
+    {SID: req.params.postPID},
+    function(err){
+      if(!err){
+        res.send("success");
+      } else {
+        res.send(err);
+      }
+    }
+  );
+});
+
 
 //dealing with ratings ----------------------------------------------------------------------
 
@@ -437,80 +598,6 @@ app.route("/plays_sports/:psUID")
 .delete(function(req,res){
   plays_sport.deleteOne(
     {UID: req.params.psUID},
-    function(err){
-      if(!err){
-        res.send("success");
-      } else {
-        res.send(err);
-      }
-    }
-  );
-});
-
-
-//dealing with posts -----------------------------------------------------------------------------------
-const post = mongoose.model("post", postSchema);
-
-app.route("/posts")
-
-.get(function(req,res){
-  post.find(function(err, foundPost){
-    if(!err){
-      res.send(foundPost);
-    } else {
-      res.send(err);
-    }
-  });
-})
-
-.post(function(req,res){    //posting new post
-
-  const newPost = new post({
-    PID: req.body.PID,
-    Time_posted: req.body.Time_posted,
-    Body: req.body.Body,
-    Resolved_status: req.body.Resolved_status,
-    Coach_ID: req.body.Coach_ID
-  });
-
-  newPost.save(function(err){
-    if(!err){
-      res.send("success");
-    } else {
-      res.send(err);
-    }
-  });
-});
-
-app.route("/posts/:postPID")
-
-.get(function(req,res){
-  post.findOne({PID: req.params.postPID}, function(err, foundPost){
-    if(foundPost){
-      res.send(foundPost);
-    } else {
-      res.send("post not found");
-    }
-  });
-})
-
-.patch(function(req, res){
-  post.updateOne(
-    {PID: req.params.postPID},
-    {$set: req.body},
-    function(err){
-      if(!err){
-        res.send("Successful");
-      } else{
-        res.send(err);
-      }
-    }
-  );
-})
-
-.delete(function(req,res){
-  post.deleteOne(
-    {PID: req.params.postPID},
     function(err){
       if(!err){
         res.send("success");
