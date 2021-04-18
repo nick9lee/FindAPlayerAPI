@@ -1,5 +1,5 @@
 # FindAPlayerAPI
-Restful api code for FindAPlayer app. app itself is still in progress
+Restful api code for FindAPlayer app.
 
 https://vast-meadow-12159.herokuapp.com/
 
