@@ -10,7 +10,7 @@ EX: https://vast-meadow-12159.herokuapp.com/users to see all users, then add "/p
 so if user had a UID of 1234, then use https://vast-meadow-12159.herokuapp.com/users/1234 to get that particular user
 
 to run locally, clone repo, navigate to folder FindAPlayer-API in terminal. ensure you have node installed, type node app.js. then you can access the api at
-"localhost:3000". so to see users you would type localhost:3000/users
+"localhost:3000". so to see users you would type localhost:3000/users into a web browser
 
 
 for posts, access post by PID, UID, SID. notice the flages at the end EX: https://vast-meadow-12159.herokuapp.com/posts/PID
@@ -20,3 +20,8 @@ EX: https://vast-meadow-12159.herokuapp.com/posts/UID/flag1
 EX: https://vast-meadow-12159.herokuapp.com/posts/SID/flag1/flag2
 
 for pushing, use "git push heroku HEAD:main"
+
+
+API Documentation can be found at the link below.
+
+https://documenter.getpostman.com/view/15184167/TzJsexji
