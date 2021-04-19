@@ -19,9 +19,8 @@ EX: https://vast-meadow-12159.herokuapp.com/posts/UID/flag1
 
 EX: https://vast-meadow-12159.herokuapp.com/posts/SID/flag1/flag2
 
-for pushing, use "git push heroku HEAD:main"
+for pushing, use "git push heroku HEAD:main". For some odd reason the regular "git push heroku main" does not work properly
 
-
-API Documentation can be found at the link below.
+API Documentation can be found at the link below:
 
 https://documenter.getpostman.com/view/15184167/TzJsexji
